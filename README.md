@@ -123,5 +123,5 @@ This project is licensed under the [MIT License](LICENSE).
 
 - **Contributing**: Contributions are welcome! Feel free to fork the repository and submit pull requests for enhancements or bug fixes.
 
-- **Support**: If you encounter any issues or have questions, please open an [issue](https://github.com/leldr/Chrome-Composite-Markup-Generator/issues) on the GitHub repository.
+- **Support**: If you encounter any issues or have questions, please either create a [Q&A entry in the discussions](https://github.com/leldr/Unofficial-Chrome-Based-Kobo-Composite-Markup-Generator/discussions/categories/q-a) or open an [issue](https://github.com/leldr/Chrome-Composite-Markup-Generator/issues) on the GitHub repository.
 
