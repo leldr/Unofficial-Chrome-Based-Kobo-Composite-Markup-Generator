@@ -1,8 +1,7 @@
 
 
-# Unoffical Kobo Composite Markup Generator Tool
+# Unoffical Chrome-based Kobo Composite Markup Generator Tool
 
-![Project Banner](path-to-your-banner-image) <!-- Optional: Add a banner image if available -->
 
 ## Table of Contents
 
@@ -12,30 +11,28 @@
 - [Installation](#installation)
 - [Usage](#usage)
 - [Author](#author)
-- [Project Repository](#project-repository)
 - [Disclaimer](#disclaimer)
 - [License](#license) <!-- Optional: Add if you have a license -->
 
 ## Overview
 
-The **Unoffical Kobo Composite Markup Generator** is a user-friendly web tool designed to process Kobo e-reader data efficiently. It allows users to overlay SVG images onto JPG files and generate composite PNG images based on data extracted from a `KoboReader.sqlite` database. By leveraging modern web technologies, this tool provides an accessible solution without the need for complex technical configurations, making it easily usable by a broader audience.
+The *Unofficial Chrome-based Kobo Composite Markup Generator* is a user-friendly, in-browser tool designed to efficiently process Kobo e-reader data. It enables users to overlay SVG images onto JPG files and generate composite PNG images using data extracted from a KoboReader.sqlite database. This combination of HTML and JavaScript offers a custom approach to processing your markup files and creating composite images that display annotations directly on your original book pages.
 
 ## Background
 
-Kobo, the company behind popular e-readers like the Kobo Libra 2, has not provided a native solution for exporting markups outside of their proprietary ecosystem. This limitation has been a point of frustration for many Kobo users, including myself. To address this gap, I developed the **Chrome Composite Markup Generator**.
+Kobo, the company behind popular e-readers like the Kobo Libra 2, has not provided a native solution for exporting markups outside of their proprietary ecosystem. This limitation has been a point of frustration for many Kobo users, including myself. To address this gap, I developed the **Unofficial Chrome-based Kobo Composite Markup Generator**.
 
 The initial iteration of this project was a Python script that required intricate environment setups and technical configurations, making it inaccessible to most users. Recognizing the need for a more accessible solution, I completely rewrote the tool using JavaScript and HTML. This transition ensures that users can effortlessly run the tool directly from their Chrome browser without worrying about environment configurations.
 
-The tool has been thoroughly tested in December 2024 on both **Linux** and **Windows** operating systems using the **Google Chrome** browser, specifically with the Kobo Libra 2 device, ensuring reliable performance across these platforms.
+The tool has been thoroughly tested in December 2024 on both **Linux** and **Windows** operating systems using the **Google Chrome** browser, specifically with the Kobo Libra 2 device.
 
 ## Features
 
-- **SQLite Database Integration**: Reads and extracts relevant data from the `KoboReader.sqlite` file.
+- **SQLite Database Integration**: Reads and extracts relevant data from the `KoboReader.sqlite` file to organize markup files by book title _and_ preserve the order in which markups appear in a book.
 - **Image Processing**: Overlays SVG images onto JPG files to create composite PNG images.
 - **User-Friendly Interface**: Simple and intuitive web-based interface for easy navigation and usage.
 - **Progress Tracking**: Real-time progress bar and logging to monitor processing status.
-- **No Modification of Original Files**: Ensures that original `KoboReader.sqlite`, `.jpg`, and `.svg` files remain unaltered.
-- **Author and Repository Information**: Easily accessible links to the author's GitHub profile and project repository.
+- **No Modification of Original Files**: Ensures that original `KoboReader.sqlite`, `.jpg`, and `.svg` files in the `.kobo/markups` folder remain unaltered.
 
 ## Installation
 
@@ -58,7 +55,7 @@ Follow these steps to set up and use the **Chrome Composite Markup Generator**:
    
    - Open the extracted folder.
    - Locate the `index.html` file.
-   - Open `index.html` in the **Google Chrome** browser to use the tool.
+   - Open `index.html` in the **Google Chrome** browser to use the tool. Follow the on-screen instructions listed.
 
    **Note**: This tool is specifically designed to be used in the Google Chrome browser due to its reliance on the File System Access API, which is supported in Chromium-based browsers like Chrome and Edge.
 
@@ -93,14 +90,7 @@ Developed by [@leldr](https://github.com/leldr) on GitHub.
 
 ![Author GitHub](https://img.shields.io/badge/GitHub-%40leldr-blue?style=for-the-badge&logo=github)
 
-## Project Repository
 
-Access the project's source code and contribute to its development:
-
-🔗 [Chrome-Composite-Markup-Generator](https://github.com/leldr/Chrome-Composite-Markup-Generator)
-
-![Repository Stars](https://img.shields.io/github/stars/leldr/Chrome-Composite-Markup-Generator?style=for-the-badge)
-![Repository Forks](https://img.shields.io/github/forks/leldr/Chrome-Composite-Markup-Generator?style=for-the-badge)
 
 ## Disclaimer
 
@@ -120,7 +110,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 ### Additional Notes
 
-- **Browser Compatibility**: Ensure you're using a **Chromium-based browser** like **Google Chrome** or **Microsoft Edge** for the best experience, as the tool relies on the **File System Access API**, which is supported in these browsers.
+- **Browser Compatibility**: Ensure you're using a **Chromium-based browser** like **Google Chrome** or **Microsoft Edge** for the best experience, as the tool relies on the **File System Access API**, which is supported in these browsers. As of Decemeber 2024, this tool has not been tested on Edge Browsers.
 
 - **Data Safety**: While the tool is designed not to modify your original files, it's a good practice to back up your `KoboReader.sqlite`, `.jpg`, and `.svg` files before processing.
 
