@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Composite Markup Generator</title>
+  <title>Unofficial Chrome-Based Kobo Composite Markup Generator</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -83,12 +83,126 @@
       white-space: pre-wrap;
       font-family: monospace;
     }
+    /* Styles for the Instructions section */
+    .instructions {
+      background-color: #e9ecef;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+      border-left: 4px solid #007bff;
+    }
+    .instructions h2 {
+      margin-top: 0;
+      color: #007bff;
+    }
+    .instructions ol {
+      padding-left: 1.5rem;
+    }
+    .instructions li {
+      margin-bottom: 0.5rem;
+    }
+    .instructions ul {
+      padding-left: 1.5rem;
+      margin-top: 0.5rem;
+    }
+    .important {
+      color: #dc3545;
+      font-weight: bold;
+    }
+    .info-box {
+      background-color: #d1ecf1;
+      border: 1px solid #bee5eb;
+      padding: 1rem;
+      border-radius: 4px;
+      margin-top: 1rem;
+      color: #0c5460;
+    }
+    .info-box h3 {
+      margin-top: 0;
+    }
+    /* Styles for the Disclaimer section */
+    .disclaimer {
+      background-color: #f8d7da;
+      border: 1px solid #f5c6cb;
+      padding: 1rem;
+      border-radius: 4px;
+      margin-top: 2rem;
+      color: #721c24;
+    }
+    .disclaimer h3 {
+      margin-top: 0;
+    }
+    /* Styles for the Author and Repository Card */
+    .author-repo-card {
+      background-color: #f1f1f1;
+      border: 1px solid #ccc;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-top: 2rem;
+      text-align: center;
+    }
+    .author-repo-card h3 {
+      margin-top: 0;
+      color: #007bff;
+    }
+    .author-repo-card a {
+      color: #007bff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .author-repo-card a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Composite Markup Generator</h1>
+    <h1>Unofficial Chrome-Based Kobo Composite Markup Generator</h1>
     
+    <!-- Instructions Section -->
+    <div class="instructions">
+      <h2>Instructions</h2>
+      <ol>
+        <li>
+          <strong>Select KoboReader.sqlite File:</strong> Click on the file input labeled "Select KoboReader.sqlite File" and choose the appropriate SQLite database file from your system.
+        </li>
+        <li>
+          <strong>Select Input Directory:</strong> Click on the file input labeled "Select Input Directory (.kobo/markups)" and navigate to the directory containing your <code>.jpg</code> and <code>.svg</code> files.
+        </li>
+        <li>
+          <strong>Create a New Output Directory:</strong> 
+          <span class="important">It is <u>crucial</u> to create a <em>new</em> directory that will serve as the output directory. Not doing so can negatively impact the performance of the tool.</span>
+          <br>
+          To create a new directory:
+          <ul>
+            <li>Choose a location on your system where you want the output files to be saved.</li>
+            <li>Create a new folder (e.g., "CompositeOutputs") to ensure that existing files are not overwritten and to maintain optimal performance.</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Select Output Directory:</strong> Click the "Select Output Directory" button and navigate to the newly created directory. Select it to set it as the destination for the processed files.
+        </li>
+        <li>
+          <strong>Run Composite:</strong> Once all the above steps are completed and the "Run Composite" button is enabled, click it to start the processing of your files. Monitor the progress and logs to ensure everything runs smoothly.
+        </li>
+      </ol>
+      <div class="info-box">
+        <h3>About File System Access API</h3>
+        <p>
+          The <strong>File System Access API</strong> is a modern web API that allows web applications to interact with the user's local file system. It enables features such as:
+        </p>
+        <ul>
+          <li>Opening and saving files directly from the browser.</li>
+          <li>Creating, reading, writing, and deleting files and directories.</li>
+          <li>Enhanced security by granting explicit permissions to access specific files or directories.</li>
+        </ul>
+        <p>
+          <strong>Important:</strong> This API is currently supported in Chromium-based browsers like Google Chrome and Microsoft Edge. It requires secure contexts (HTTPS) to function. For best results, please use Chrome.
+        </p>
+      </div>
+    </div>
+    
+    <!-- File Selection Inputs -->
     <label for="sqliteFile">Select KoboReader.sqlite File:</label>
     <input type="file" id="sqliteFile" accept=".sqlite" />
   
@@ -101,12 +215,28 @@
   
     <button id="runButton" disabled>Run Composite</button>
   
+    <!-- Progress and Logs -->
     <div id="progressContainer">
       <label>Progress:</label>
       <div id="progressBar"><div>0%</div></div>
       <div id="log"></div>
     </div>
+    
+    <!-- Disclaimer Section -->
+    <div class="disclaimer">
+      <h3>Disclaimer</h3>
+      <p>
+        <strong>Important:</strong> This tool is provided <em>as is</em>, without any warranties or guarantees of any kind. The developer is not liable for any damages, losses, or issues that may arise from the use or inability to use this tool. <strong>Note:</strong> This tool does <u>not</u> modify your original <code>KoboReader.sqlite</code> file or the input <code>.jpg</code> and <code>.svg</code> files. However, users are advised to use this application responsibly and ensure that their data is backed up before proceeding.
+      </p>
+    </div>
   </div>
+
+    <!-- Author and Repository Card -->
+    <div class="author-repo-card">
+      <h3>About the Author</h3>
+      <p>Developed by <a href="https://github.com/leldr" target="_blank">@leldr</a>.</p>
+      <p>Project Repository: <a href="https://github.com/leldr/Chrome-Composite-Markup-Generator" target="_blank">Chrome-Composite-Markup-Generator</a></p>
+    </div>
 
   <!-- Include sql.js from CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.2/sql-wasm.js"></script>
