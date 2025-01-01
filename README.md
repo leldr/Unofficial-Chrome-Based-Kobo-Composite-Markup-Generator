@@ -70,9 +70,10 @@ Follow these steps to set up and use the **Chrome Composite Markup Generator**:
    
    - The tool provides step-by-step instructions within the interface. Please follow these instructions carefully to ensure optimal performance and intended results.
 
-   ![Tool Interface](path-to-tool-interface-image) <!-- Optional: Add a screenshot of the tool interface -->
+   ![Tool Interface](https://github.com/leldr/Unofficial-Chrome-Based-Kobo-Composite-Markup-Generator/blob/main/Tool%20Interface.gif) <!-- Optional: Add a screenshot of the tool interface -->
 
 3. **Processing Files**:
+
    
    - **Select KoboReader.sqlite File**: Click on the file input labeled "Select KoboReader.sqlite File" and choose the appropriate SQLite database file from your system.
    - **Select Input Directory**: Click on the file input labeled "Select Input Directory (.kobo/markups)" and navigate to the directory containing your `.jpg` and `.svg` files.
@@ -83,6 +84,12 @@ Follow these steps to set up and use the **Chrome Composite Markup Generator**:
        - Create a new folder (e.g., "CompositeOutputs") to ensure that existing files are not overwritten and to maintain optimal performance.
    - **Select Output Directory**: Click the "Select Output Directory" button and navigate to the newly created directory. Select it to set it as the destination for the processed files.
    - **Run Composite**: Once all the above steps are completed and the "Run Composite" button is enabled, click it to start the processing of your files. Monitor the progress and logs to ensure everything runs smoothly.
+
+## Video Demo
+
+
+https://github.com/leldr/Unofficial-Chrome-Based-Kobo-Composite-Markup-Generator/blob/main/Tool-Video-Demo.mp4
+
 
 ## Author
 
