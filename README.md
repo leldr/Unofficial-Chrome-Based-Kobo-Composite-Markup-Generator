@@ -33,6 +33,8 @@ The tool has been thoroughly tested in December 2024 on both **Linux** and **Win
 - **User-Friendly Interface**: Simple and intuitive web-based interface for easy navigation and usage.
 - **Progress Tracking**: Real-time progress bar and logging to monitor processing status.
 - **No Modification of Original Files**: Ensures that original `KoboReader.sqlite`, `.jpg`, and `.svg` files in the `.kobo/markups` folder remain unaltered.
+- **Organizes Markups by Book Title**: Queries the `KoboReader.sqlite` database to determine what boot title your markups belong to.
+- **Preserves Order of Markups based on Book "Page" Occurance**: Because markup files are randomly named, order is not preserved. This tool also uses `KoboReader.sqlite` queries to properly order your markups by book page.
 
 ## Installation
 
