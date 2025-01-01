@@ -88,7 +88,7 @@ Follow these steps to set up and use the **Chrome Composite Markup Generator**:
 ## Video Demo
 
 
-https://github.com/leldr/Unofficial-Chrome-Based-Kobo-Composite-Markup-Generator/blob/main/Tool-Video-Demo.mp4
+[![Video Demo](https://www.youtube.com/watch?v=uUZpMHj0_8w]
 
 
 ## Author
