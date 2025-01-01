@@ -36,7 +36,7 @@ The tool has been thoroughly tested in December 2024 on both **Linux** and **Win
 
 ## Installation
 
-Follow these steps to set up and use the **Chrome Composite Markup Generator**:
+Follow these steps to set up and use the **Chrome-Based Kobo Composite Markup Generator**:
 
 1. **Download the Project**:
    
