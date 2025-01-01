@@ -10,6 +10,7 @@
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Disclaimer](#disclaimer)
 - [Author](#author)
 - [License](#license) <!-- Optional: Add if you have a license -->
 
