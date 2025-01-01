@@ -1,6 +1,6 @@
 
 
-# Unoffical Chrome-based Kobo Composite Markup Generator Tool
+# Unofficial Chrome-based Kobo Composite Markup Generator Tool
 
 
 ## Table of Contents
@@ -11,7 +11,6 @@
 - [Installation](#installation)
 - [Usage](#usage)
 - [Author](#author)
-- [Disclaimer](#disclaimer)
 - [License](#license) <!-- Optional: Add if you have a license -->
 
 ## Overview
@@ -105,7 +104,6 @@ Developed by [@leldr](https://github.com/leldr) on GitHub.
 
 **Note:** This tool does **not** modify your original `KoboReader.sqlite` file or the input `.jpg` and `.svg` files. However, users are advised to use this application responsibly and ensure that their data is backed up before proceeding.
 
-![Disclaimer](path-to-disclaimer-image) <!-- Optional: Add an image related to disclaimer -->
 
 ## License
 
