@@ -43,7 +43,7 @@ Follow these steps to set up and use the **Chrome Composite Markup Generator**:
    - Navigate to the [Chrome Composite Markup Generator Repository](https://github.com/leldr/Chrome-Composite-Markup-Generator) on GitHub.
    - Click on the green **Code** button and select **Download ZIP**.
    
-   ![Download ZIP](path-to-download-zip-image) <!-- Optional: Add an image showing the download button -->
+   ![Download ZIP](https://github.com/leldr/Unofficial-Chrome-Based-Kobo-Composite-Markup-Generator/blob/main/Download%20zip%20option.png)<!-- Optional: Add an image showing the download button -->
 
 2. **Extract the ZIP File**:
    
