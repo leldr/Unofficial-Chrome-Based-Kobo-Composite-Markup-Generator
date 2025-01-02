@@ -24,7 +24,7 @@ Kobo, the company behind popular e-readers like the Kobo Libra Color 2, has not 
 
 The initial iteration of this project was a Python script that required intricate environment setups and technical configurations, making it inaccessible to most users. Recognizing the need for a more accessible solution, I completely rewrote the tool using JavaScript and HTML. This transition ensures that users can effortlessly run the tool directly from their Chrome browser without worrying about environment configurations.
 
-The tool has been thoroughly tested in December 2024 on both **Linux** and **Windows** operating systems using the **Google Chrome** browser, specifically with the Kobo Libra 2 device.
+The tool has been thoroughly tested in December 2024 on both **Linux** and **Windows** operating systems using the **Google Chrome** browser, specifically with the Kobo Libra Color 2 device.
 
 ## Features
 
