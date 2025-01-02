@@ -96,7 +96,7 @@ Follow these steps to set up and use the **Chrome-Based Kobo Composite Markup Ge
 
 Developed by [@leldr](https://github.com/leldr) on GitHub.
 
-[<img src ="https://storage.ko-fi.com/cdn/brandasset/logo_white_stroke_small.png">](https://ko-fi.com/G2G218AXOX)
+<a href='https://ko-fi.com/G2G218AXOX' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi6.png?v=6' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 
 ![Author GitHub](https://img.shields.io/badge/GitHub-%40leldr-blue?style=for-the-badge&logo=github)
 
