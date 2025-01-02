@@ -20,11 +20,11 @@ The *Unofficial Chrome-based Kobo Composite Markup Generator* is a user-friendly
 
 ## Background
 
-Kobo, the company behind popular e-readers like the Kobo Libra Color 2, has not provided a native solution for exporting markups outside of their proprietary ecosystem. This limitation has been a point of frustration for many Kobo users, including myself. To address this gap, I developed the **Unofficial Chrome-based Kobo Composite Markup Generator**.
+Kobo, the company behind popular e-readers like the Kobo Libra Color, has not provided a native solution for exporting markups outside of their proprietary ecosystem. This limitation has been a point of frustration for many Kobo users, including myself. To address this gap, I developed the **Unofficial Chrome-based Kobo Composite Markup Generator**.
 
 The initial iteration of this project was a Python script that required intricate environment setups, making it inaccessible to most users. Recognizing the need for a more accessible solution, I completely rewrote the tool using JavaScript and HTML. This transition ensures that users can effortlessly run the tool directly from their Chrome browser without worrying about environment configurations.
 
-The tool has been thoroughly tested in December 2024 on both **Linux** and **Windows** operating systems using the **Google Chrome** browser, specifically with the Kobo Libra Color 2 device with out-of-the-box software version 4.41.23. This tool has also been tested using files and directories sitting directly on my Kobo Libra Color 2 device, with no ill effects.
+The tool has been thoroughly tested in December 2024 on both **Linux** and **Windows** operating systems using the **Google Chrome** browser, specifically with the Kobo Libra Color device with out-of-the-box software version 4.41.23. This tool has also been tested using files and directories sitting directly on my Kobo Libra Color device, with no ill effects.
 
 ## Features
 
