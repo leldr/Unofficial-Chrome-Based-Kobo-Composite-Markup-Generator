@@ -131,7 +131,7 @@ runButton.addEventListener('click', async () => {
       const safeLocation = orderingNumber || 'LocX';
       const shortBase = base.substring(0, 8);
 
-      const outputName = `markup_${bookmarkSectionName}_${safePartName}${safeLocation}_${shortBase}.png`;
+      const outputName = sanitizeFilename(`markup_${bookmarkSectionName}_${safePartName}${safeLocation}_${shortBase}.png`);
 
       log(`Book Title: ${bookTitle}`);
       log(`Section: ${bookmarkSectionName}`);
@@ -163,6 +163,12 @@ runButton.addEventListener('click', async () => {
 });
 
 // Utility Functions
+
+
+function sanitizeFilename(filename) {
+  // Replace any illegal characters with an underscore
+  return filename.replace(/[\/\\?%*:|"<>]/g, '_');
+}
 
 function log(message) {
   logDiv.textContent += message + '\n';
