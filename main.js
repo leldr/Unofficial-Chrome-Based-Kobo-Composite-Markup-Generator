@@ -186,7 +186,18 @@ function pathBaseName(filename) {
 function extractBookTitle(volumeId) {
   // Assuming volumeId is a path-like string, extract the last segment
   const parts = volumeId.split('/');
-  return parts[parts.length - 1] || 'UnknownBook';
+  let title = parts[parts.length - 1] || 'UnknownBook';
+  
+  // Replace dots with underscores to preserve file extensions
+  title = title.replace(/\./g, '_');
+  
+  // Further sanitize the title for use as a directory name
+  return sanitizeDirectoryName(title);
+}
+
+function sanitizeDirectoryName(dirName) {
+  // Remove illegal characters but keep the underscores that replaced dots
+  return dirName.replace(/[\/\\?%*:|"<>]/g, '_');
 }
 
 function getVolumeId(base, db) {
