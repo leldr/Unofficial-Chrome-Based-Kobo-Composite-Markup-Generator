@@ -121,17 +121,17 @@ runButton.addEventListener('click', async () => {
       const volumeId = getVolumeId(base, db);
       const sectionTitle = getSectionTitle(base, db);
       const bookPartNumber = getBookPartNumber(base, db);
-      const orderingNumber = getOrderingNumber(base, db);
+      const orderingNumber = getOrderingNumber(base, db, base);
 
       const bookTitle = volumeId ? extractBookTitle(volumeId) : 'UnknownBook';
       const bookmarkSectionName = sectionTitle && sectionTitle.trim().length > 1
         ? sectionTitle
         : `Chapter ${sectionTitle || ''}`;
-      const safePartName = bookPartNumber || 'PartX';
-      const safeLocation = orderingNumber || 'LocX';
+      const safePartName = bookPartNumber|| '';
+      const safeLocation = orderingNumber || '';
       const shortBase = base.substring(0, 8);
 
-      const outputName = sanitizeFilename(`markup_${bookmarkSectionName}_${safePartName}${safeLocation}_${shortBase}.png`);
+      const outputName = sanitizeFilename(`markup_${bookmarkSectionName}_${safePartName}_${safeLocation}_${shortBase}.png`);
 
       log(`Book Title: ${bookTitle}`);
       log(`Section: ${bookmarkSectionName}`);
@@ -166,8 +166,8 @@ runButton.addEventListener('click', async () => {
 
 
 function sanitizeFilename(filename) {
-  // Replace any illegal characters with an underscore
-  return filename.replace(/[\/\\?%*:|"<>]/g, '_');
+  // Replace any illegal characters with an underscore, along file extentions that reduce final filename legibility and impair screenshot ordering
+  return filename.replace(/[\/\\?%*:|"<>]/g, '_').replace('.xhtml','').replace('-','').replace('index_split_','').replace(" ", "");
 }
 
 function log(message) {
@@ -197,21 +197,41 @@ function extractBookTitle(volumeId) {
 
 function sanitizeDirectoryName(dirName) {
   // Remove illegal characters but keep the underscores that replaced dots
-  return dirName.replace(/[\/\\?%*:|"<>]/g, '_');
+  return dirName.replace(/[\/\\?%*:|"<>]/g, '_').replace("_epub","");
 }
 
-function getVolumeId(base, db) {
+function getVolumeId(base, db, volumeId) {
   const query = "SELECT VolumeID FROM Bookmark WHERE BookmarkID = ?";
   const stmt = db.prepare(query);
   stmt.bind([base]);
+
+
   if (stmt.step()) {
     const row = stmt.getAsObject();
-    stmt.free();
-    return row.VolumeID || null;
+    volumeId = row.VolumeID || null;
   }
   stmt.free();
-  return null;
+
+  // Regex for UUID (8-4-4-4-12 hex chars)
+  const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+  if (volumeId && uuidRegex.test(volumeId)) {
+
+    // Query for human-legible book title instead
+    const bookStmt = db.prepare(
+      "SELECT DISTINCT BookTitle FROM content WHERE BookId = ?"
+    );
+    bookStmt.bind([volumeId]);
+    if (bookStmt.step()) {
+      const row = bookStmt.getAsObject();
+      volumeId = row.BookTitle || volumeId; // fallback to UUID if no title found
+    }
+    bookStmt.free();
+  }
+
+  return volumeId;
 }
+
 
 function getSectionTitle(base, db) {
   const query = `
@@ -259,29 +279,47 @@ function getBookPartNumber(base, db) {
   return null;
 }
 
-function getOrderingNumber(base, db) {
+function getOrderingNumber(base, db, base) {
+  log(`GET ORDER NUMBER EXECUTE`);
+  // Regex for UUID (8-4-4-4-12 hex chars)
+  const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
   const query = `
     SELECT StartContainerPath 
     FROM Bookmark 
     WHERE BookmarkID = ?
   `;
-  const stmt = db.prepare(query);
-  stmt.bind([base]);
-  if (stmt.step()) {
-    const row = stmt.getAsObject();
-    stmt.free();
-    if (row.StartContainerPath) {
-      const pattern = /point\((\/[\d/]+:\d+)\)/;
-      const match = row.StartContainerPath.match(pattern);
-      if (match) {
-        const cleaned = match[1].replace(':', '.').replace(/\//g, '.');
-        return cleaned;
+ 
+ 
+  // Case 1: UUID VolumeID → extract "kobo.16.2" from span#kobo.16.2
+  if (base && uuidRegex.test(base)) {
+    log(`QUACK`);
+    const stmt = db.prepare(query);
+    stmt.bind([base]);
+    if (stmt.step()) {
+      const row = stmt.getAsObject();
+      stmt.free();
+      if (row.StartContainerPath) {
+        log(`row.StartContainerPath: ${row.StartContainerPath}`);
+        // Match span#kobo.16.2
+        const kobo_epub = row.StartContainerPath.match(/^span#([\w.]+)$/);
+        const pdf_or_open_epub = row.StartContainerPath.match(/point\((\/[\d/]+:\d+)\)/);
+        if (kobo_epub) {
+          log(`FOUND KOBO MATCH: ${kobo_epub[1]}`);
+          return kobo_epub[1].replace(':', '.').replace(/\//g, '.');; // e.g., "kobo.16.2"
+        }
+        if (pdf_or_open_epub) {
+          log(`FOUND PDF/OPEN-EPUB MATCH: ${pdf_or_open_epub[1]}`);
+          return pdf_or_open_epub[1].replace(':', '.').replace(/\//g, '.');;
+        } 
       }
     }
+    stmt.free();
+    return null;
   }
-  stmt.free();
-  return null;
+
 }
+
 
 async function overlaySvgOnJpg(jpgFile, svgFile) {
   // Load JPG Image
